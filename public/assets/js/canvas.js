@@ -1,3 +1,4 @@
+
 function setup() {
     createCanvas(500, 500);
     background('#f6f6f6');
@@ -15,4 +16,10 @@ function mouseDragged() {
 function mousePressed() { 
 	strokeWeight(10);
 	line(mouseX, mouseY, pmouseX, pmouseY);
+}
+
+function mouseReleased() { 
+    console.log('Converted to .jpg');
+    clear();
+    background('#f6f6f6');
 }
