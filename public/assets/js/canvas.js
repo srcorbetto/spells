@@ -1,4 +1,3 @@
-
 function setup() {
     createCanvas(500, 500);
     background('#f6f6f6');
@@ -20,6 +19,15 @@ function mousePressed() {
 
 function mouseReleased() { 
     console.log('Converted to .jpg');
+    const img = canvas.toDataURL('image/png');
+    console.log(img);
+    $('#test').attr('src', img);
     clear();
     background('#f6f6f6');
+    const imgEncoded = {
+        url: img
+    }
+    $.post('/spell', imgEncoded, (data, status) => {
+        // console.log(data);
+    })
 }

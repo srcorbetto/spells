@@ -3,3 +3,4 @@
 .env
 spells-google-key.json
 design.ai
+firebase-config.js
