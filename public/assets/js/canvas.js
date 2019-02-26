@@ -19,8 +19,9 @@ function mousePressed() {
 
 function mouseReleased() { 
     console.log('Converted to .jpg');
+    
     const img = canvas.toDataURL('image/png');
-    console.log(img);
+    
     $('#test').attr('src', img);
     clear();
     background('#f6f6f6');
