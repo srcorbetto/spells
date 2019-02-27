@@ -2,9 +2,9 @@ const vision = require('@google-cloud/vision');
 const client = new vision.ImageAnnotatorClient();
 const fs = require('fs');
 
-const googleApiCall = (url, fileLocation) => {
+const googleApiCall = (fileLocation) => {
     client
-  .labelDetection(url)
+  .labelDetection(fileLocation)
   .then(results => {
     const labels = results[0].labelAnnotations;
 

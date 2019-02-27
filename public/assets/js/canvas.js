@@ -21,7 +21,7 @@ function mouseReleased() {
     console.log('Converted to .jpg');
     
     const img = canvas.toDataURL('image/png');
-    
+    // console.log(`img: ${img}`);
     $('#test').attr('src', img);
     clear();
     background('#f6f6f6');
@@ -29,6 +29,6 @@ function mouseReleased() {
         url: img
     }
     $.post('/spell', imgEncoded, (data, status) => {
-        // console.log(data);
+        console.log(data);
     })
 }
