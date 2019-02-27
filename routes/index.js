@@ -23,7 +23,6 @@ router.post('/spell', (req, res) => {
        console.log('Image Created');
        methods.googleApiCall(drawingLocation);
       });
-    // console.log(req.body.url);
     res.send('poop');
 });
 
