@@ -6,12 +6,11 @@ const spellDetect = label => {
     console.log(`Label argument: ${label}`);
     switch(label) {
         case 'Circle':
-          console.log('Circle magic');
-          break;
+            return console.log('Circle magic');
+        break;
         default:
-            console.log('No Match');
+            return false;
       }
-
 }
 
 const googleApiCall = (fileLocation) => {
@@ -21,10 +20,20 @@ const googleApiCall = (fileLocation) => {
     const labels = results[0].labelAnnotations;
     // console.log(labels);
     console.log('Labels:');
-    labels.forEach(label => {
-        console.log(label.description);
-        spellDetect(label.description);
-    });
+    // console.log(labels);
+    // labels.forEach(label => {
+    //     console.log(label.description);
+    //     spellDetect(label.description);
+    // });
+    for (i = 0; i < labels.length; i++) {
+        console.log(labels[i].description);
+        const spellResponse = spellDetect(labels[i].description);
+        if (spellResponse == "string") {
+            console.log(spellResponse);
+            console.log('Break');
+            break;
+        }
+    }
     fs.unlinkSync(fileLocation);
   })
   .catch(err => {
