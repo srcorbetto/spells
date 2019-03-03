@@ -2,13 +2,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const fs = require('fs');
-const methods = require('../methods');
-const drawingLocation = `./public/assets/img/drawing.png`;
+// const methods = require('../methods');
+const vision = require('@google-cloud/vision');
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 const router = express.Router();
+
+const client = new vision.ImageAnnotatorClient();
+const drawingLocation = `./public/assets/img/drawing.png`;
+let spellUrl;
 
 router.get('/', (req, res) => {
     console.log('index reached');
@@ -16,14 +20,48 @@ router.get('/', (req, res) => {
 });
 
 router.post('/spell', (req, res) => {
+    // Receive Payload
     const image = req.body.url;
+    // Clean up
     const data = image.replace(/^data:image\/\w+;base64,/, '');
+    // Write file and send to Vision API...
     fs.writeFile(drawingLocation, data, {encoding: 'base64'}, (err, data) => {
+        // If error...
         if (err) { return console.log(err)}
-       console.log('Image Created');
-       methods.googleApiCall(drawingLocation);
+        console.log('Image Created');
+        // Start API call...
+        client
+        .labelDetection(drawingLocation)
+        .then(results => {
+            // Process results...
+            const labels = results[0].labelAnnotations;
+            // console.log('Labels:', labels);
+            // for (i = 0; i < labels.length; i++) {
+            //     const spellResponse = labels[i].description;
+            //     console.log(spellResponse);
+            //     switch(spellResponse) {
+            //     case 'Circle':
+            //         results = 'Circle response';
+            //     break;
+            //     case 'Oval':
+            //         results = 'Oval response';
+            //     break;
+            //     case 'Line art':
+            //         results = 'Line art response';
+            //     break;
+            //     default:
+            //         results = 'No Match';
+            //     }
+            // }
+            // Remove file from server...may need to time stamp...
+            fs.unlinkSync(drawingLocation);
+            res.send(labels);
+        })
+        // Handle error
+        .catch(err => {
+            console.error('ERROR:', err);
+        });
       });
-    res.send('poop');
 });
 
 module.exports = router;

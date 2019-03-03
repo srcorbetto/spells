@@ -29,6 +29,23 @@ function mouseReleased() {
         url: img
     }
     $.post('/spell', imgEncoded, (data, status) => {
-        console.log(data);
+        console.log('Labels:', data);
+        for (i = 0; i < data.length; i++) {
+            const spellResponse = data[i].description;
+            console.log(spellResponse);
+            switch(spellResponse) {
+            case 'Circle':
+                console.log('Circle response');
+            break;
+            case 'Oval':
+                console.log('Oval response');
+            break;
+            case 'Line art':
+                console.log('Line Art response');
+            break;
+            default:
+                console.log('No Match');
+            }
+        }
     })
 }
