@@ -29,21 +29,27 @@ function mouseReleased() {
         url: img
     }
     $.post('/spell', imgEncoded, (data, status) => {
-        console.log('Labels:', data);
+        let matchFound = false;
+        let searchCounter = 3;
+        // console.log('Labels:', data);
         for (i = 0; i < data.length; i++) {
-            const spellResponse = data[i].description;
-            console.log(spellResponse);
-            switch(spellResponse) {
-            case 'Circle':
-                console.log('Circle response');
-            break;
-            case 'Oval':
-                console.log('Oval response');
-            break;
-            case 'Line art':
-                console.log('Line Art response');
-            break;
-            default:
+            if (matchFound === false && searchCounter > 0) {
+                const spellResponse = data[i].description;
+                console.log(spellResponse);
+                switch(spellResponse) {
+                case 'Circle':
+                    console.log('Circle response');
+                    matchFound = true;
+                break;
+                case 'Oval':
+                    console.log('Oval response');
+                    matchFound = true;
+                break;
+                default:
+                    console.log('No Match');
+                    searchCounter --;
+                }
+            } else if (searchCounter <= 0) {
                 console.log('No Match');
             }
         }

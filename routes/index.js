@@ -35,24 +35,6 @@ router.post('/spell', (req, res) => {
         .then(results => {
             // Process results...
             const labels = results[0].labelAnnotations;
-            // console.log('Labels:', labels);
-            // for (i = 0; i < labels.length; i++) {
-            //     const spellResponse = labels[i].description;
-            //     console.log(spellResponse);
-            //     switch(spellResponse) {
-            //     case 'Circle':
-            //         results = 'Circle response';
-            //     break;
-            //     case 'Oval':
-            //         results = 'Oval response';
-            //     break;
-            //     case 'Line art':
-            //         results = 'Line art response';
-            //     break;
-            //     default:
-            //         results = 'No Match';
-            //     }
-            // }
             // Remove file from server...may need to time stamp...
             fs.unlinkSync(drawingLocation);
             res.send(labels);
