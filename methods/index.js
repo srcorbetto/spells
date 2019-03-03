@@ -2,17 +2,6 @@ const vision = require('@google-cloud/vision');
 const client = new vision.ImageAnnotatorClient();
 const fs = require('fs');
 
-const spellDetect = label => {
-    console.log(`Label argument: ${label}`);
-    switch(label) {
-        case 'Circle':
-            return console.log('Circle magic');
-        break;
-        default:
-            return false;
-      }
-}
-
 const googleApiCall = (fileLocation) => {
     client
   .labelDetection(fileLocation)
@@ -20,18 +9,21 @@ const googleApiCall = (fileLocation) => {
     const labels = results[0].labelAnnotations;
     // console.log(labels);
     console.log('Labels:');
-    // console.log(labels);
-    // labels.forEach(label => {
-    //     console.log(label.description);
-    //     spellDetect(label.description);
-    // });
     for (i = 0; i < labels.length; i++) {
         console.log(labels[i].description);
-        const spellResponse = spellDetect(labels[i].description);
-        if (spellResponse == "string") {
-            console.log(spellResponse);
-            console.log('Break');
-            break;
+        const spellResponse = labels[i].description;
+        switch(spellResponse) {
+          case 'Circle':
+              return console.log('Circle response');
+          break;
+          case 'Oval':
+              return console.log('Oval response');
+          break;
+          case 'Line art':
+              return console.log('Line art response');
+          break;
+          default:
+              return false;
         }
     }
     fs.unlinkSync(fileLocation);
