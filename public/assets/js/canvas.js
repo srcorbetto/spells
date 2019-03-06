@@ -1,6 +1,6 @@
 function setup() {
     const canvas = createCanvas(500, 250);
-    background('#f6f6f6');
+    background('rgba(230, 230, 230, 0.25)');
     canvas.parent('canvas-holder');
 }
 
@@ -21,16 +21,15 @@ function mousePressed() {
 function mouseReleased() { 
     
     const img = canvas.toDataURL('image/png');
-    $('#test').attr('src', img);
     clear();
-    background('#f6f6f6');
+    background('rgba(230, 230, 230, 0.25)');
     const imgEncoded = {
         url: img
     }
     $.post('/spell', imgEncoded, (data, status) => {
+        const spellAnimation = $('#spell-animation')
         let matchFound = false;
         let searchCounter = 3;
-        // console.log('Labels:', data);
         for (i = 0; i < data.length; i++) {
             if (matchFound === false && searchCounter > 0) {
                 const spellResponse = data[i].description;
@@ -39,12 +38,12 @@ function mouseReleased() {
                 case 'Circle':
                     console.log('Circle response');
                     matchFound = true;
-                    $('#effect').attr('src', 'https://media.giphy.com/media/26BRt5hkD6hLzTl3q/giphy.gif');
+                    spellAnimation.attr('src', 'https://media.giphy.com/media/26BRt5hkD6hLzTl3q/giphy.gif');
                 break;
                 case 'Oval':
                     console.log('Oval response');
                     matchFound = true;
-                    $('#effect').attr('src', 'https://media.giphy.com/media/26BRt5hkD6hLzTl3q/giphy.gif');
+                    spellAnimation.attr('src', 'https://media.giphy.com/media/26BRt5hkD6hLzTl3q/giphy.gif');
                 break;
                 default:
                     console.log('No Match');

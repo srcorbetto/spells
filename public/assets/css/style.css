@@ -41,10 +41,14 @@ header {
     z-index: 100;
 }
 
+#canvas-holder:hover {
+    opacity: 1;
+}
+
 .hand-holder {
-    width: 350px;
+    width: 300px;
     position: absolute;
-    left: calc(50% - 175px);
+    left: calc(50% - 150px);
     bottom: 0px;
     z-index: 50;
 }
@@ -53,6 +57,14 @@ header {
     width: 100%;
 }
 
-.canvas-img {
-    width: 100px;
+.spell-animation-holder {
+    position: absolute;
+    width: 150px;
+    left: calc(50% - 75px);
+    bottom: 350px;
+    z-index: 25;
+}
+
+#spell-animation {
+    width: 100%;
 }
