@@ -12,7 +12,7 @@ header {
 }
 
 .content-holder {
-    background: #f1f1f1;
+    /* background: #f1f1f1; */
     /* min-height: 100vh; */
 }
 
@@ -29,6 +29,14 @@ header {
 .spell {
     width: 24%;
     padding: .625% .625%;
+}
+
+.spell-circle {
+
+}
+
+.spell-border {
+    border: 3px solid green;
 }
 
 .canvas-title {
