@@ -37,6 +37,7 @@ router.post('/spell', (req, res) => {
             const labels = results[0].labelAnnotations;
             // Remove file from server...may need to time stamp...
             fs.unlinkSync(drawingLocation);
+            // Send response
             res.send(labels);
         })
         // Handle error

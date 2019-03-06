@@ -18,10 +18,8 @@ function mousePressed() {
 }
 
 function mouseReleased() { 
-    console.log('Converted to .jpg');
     
     const img = canvas.toDataURL('image/png');
-    // console.log(`img: ${img}`);
     $('#test').attr('src', img);
     clear();
     background('#f6f6f6');
@@ -40,10 +38,12 @@ function mouseReleased() {
                 case 'Circle':
                     console.log('Circle response');
                     matchFound = true;
+                    $('#effect').attr('src', 'https://media.giphy.com/media/26BRt5hkD6hLzTl3q/giphy.gif');
                 break;
                 case 'Oval':
                     console.log('Oval response');
                     matchFound = true;
+                    $('#effect').attr('src', 'https://media.giphy.com/media/26BRt5hkD6hLzTl3q/giphy.gif');
                 break;
                 default:
                     console.log('No Match');
@@ -55,3 +55,5 @@ function mouseReleased() {
         }
     })
 }
+
+// https://media.giphy.com/media/26BRt5hkD6hLzTl3q/giphy.gif

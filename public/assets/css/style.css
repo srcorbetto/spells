@@ -3,8 +3,31 @@
 
 header {
     width: 100%;
-    height: 75px;
+    height: 50px;
     background: #261354;
+}
+
+#effect {
+    width: 200px;
+}
+
+.content-holder {
+    background: #f1f1f1;
+    min-height: 100vh;
+}
+
+.spells {
+    width: 100%;
+    text-align: center;
+}
+
+.spells-title {
+    text-align: left;
+}
+
+.spell {
+    width: 24%;
+    padding: .625% .625%;
 }
 
 .canvas-img {
