@@ -13,7 +13,7 @@ header {
 
 .content-holder {
     background: #f1f1f1;
-    min-height: 100vh;
+    /* min-height: 100vh; */
 }
 
 .spells {
@@ -28,6 +28,29 @@ header {
 .spell {
     width: 24%;
     padding: .625% .625%;
+}
+
+#canvas-holder {
+    position: absolute;
+    width: 500px;
+    padding: 0px;
+    margin: 0px;
+    left: calc(50% - 250px);
+    bottom: 15px;
+    opacity: .5;
+    z-index: 100;
+}
+
+.hand-holder {
+    width: 350px;
+    position: absolute;
+    left: calc(50% - 175px);
+    bottom: 0px;
+    z-index: 50;
+}
+
+#hand {
+    width: 100%;
 }
 
 .canvas-img {

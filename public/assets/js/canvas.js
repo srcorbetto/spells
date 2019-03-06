@@ -1,6 +1,7 @@
 function setup() {
-    createCanvas(500, 500);
+    const canvas = createCanvas(500, 250);
     background('#f6f6f6');
+    canvas.parent('canvas-holder');
 }
 
 function draw() {

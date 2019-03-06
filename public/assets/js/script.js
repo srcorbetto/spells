@@ -1,6 +1,6 @@
 $(document).ready(() => {
 
-    const canvas = $('#defaultCanvas0');
-    console.log(canvas);
+    // const canvas = $('#defaultCanvas0');
+    // console.log(canvas);
 
 });
