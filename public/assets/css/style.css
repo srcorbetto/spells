@@ -23,11 +23,23 @@ header {
 
 .spells-title {
     text-align: left;
+    text-transform: uppercase;
 }
 
 .spell {
     width: 24%;
     padding: .625% .625%;
+}
+
+.canvas-title {
+    text-transform: uppercase;
+    position: absolute;
+    width: 500px;
+    padding: 0px;
+    margin: 0px;
+    left: calc(50% - 250px);
+    bottom: 275px;
+    z-index: 150;
 }
 
 #canvas-holder {
